@@ -14,7 +14,7 @@ from dataloader import DataLoader
 root_dir = '/Volumes/ukme04/#Common/chainingmic'
 dl = DataLoader(root_dir)
 ```
- This will load a [default config file](dataloader/src/dataloader/config/default.yaml), which contains information about where to find a specific data type for each experiment, and how to load it. Currently, the following data types are supported:
+ This will load a [default config file][1], which contains information about where to find a specific data type for each experiment, and how to load it. Currently, the following data types are supported:
 - `video` (returns [videoreader](https://github.com/postpop/videoreader))
 - `tracks` ()
 - `poses`
@@ -33,7 +33,7 @@ poses = dl.get('poses', expt_id)
 ```
 
 ## Customization
-The config file describes where each type of data is found on the lab volume and how to read it. While the [default config file](dataloader/src/dataloader/config/default.yaml) supports all common data types, `dataloader` can be initialized with a custom config file via: `DataLoader(root_dir, custom_config_file_name)`. Config files are written in [yaml](https://pyyaml.org/wiki/PyYAMLDocumentation) and contain two sections: `types` and `loaders`.
+The config file describes where each type of data is found on the lab volume and how to read it. While the [default config file][1] supports all common data types, `dataloader` can be initialized with a custom config file via: `DataLoader(root_dir, custom_config_file_name)`. Config files are written in [yaml](https://pyyaml.org/wiki/PyYAMLDocumentation) and contain two sections: `types` and `loaders`.
 
 ### File types
 `types` defines all data types. Definitions are require to contain
@@ -93,3 +93,6 @@ loaders:
         # args: [arguments]
         # kwargs: {Delimiter: \t}
 ```
+
+
+[1]: http://github.com/janclemenslab/dataloader/blob/master/src/dataloader/config/default.yaml
