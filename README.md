@@ -16,10 +16,10 @@ dl = DataLoader(root_dir)
 ```
  This will load a [default config file][1], which contains information about where to find a specific data type for each experiment, and how to load it. Currently, the following data types are supported:
 - `video` (returns [videoreader](https://github.com/postpop/videoreader))
-- `tracks` ()
-- `poses`
+- `tracks` (returns a dictionary, read with [deepdish][2])
+- `poses` (returns a dictionary, read with [deepdish][2])
 - `timestamps` (todo)
-- `daq`  (todo)
+- `daq` (todo)
 - `segmentedsong` (todo)
 
 The only required argument is the `root_dir`, the path that points to the `chainingmic` folder.
@@ -96,3 +96,4 @@ loaders:
 
 
 [1]: http://github.com/janclemenslab/dataloader/blob/master/src/dataloader/config/default.yaml
+[2]: https://github.com/uchicago-cs/deepdish
