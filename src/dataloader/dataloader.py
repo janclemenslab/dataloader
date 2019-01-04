@@ -44,6 +44,7 @@ class DataLoader:
 
         self._config_filename = config_filename
         self._config = self._load_config()
+        self._config['root'] = root
         self.types = self._config['types']
         self.loaders = self._config['loaders']
 
