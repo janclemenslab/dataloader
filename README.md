@@ -24,7 +24,7 @@ dl = DataLoader(root_dir)
 
 The only required argument is the `root_dir`, the path that points to the `chainingmic` folder.
 
-Data files from an specific experiment can be loaded using `get`:
+Data files from a specific experiment can be loaded using `get`:
 ```python
 expt_id = 'localhost-20180618_151056'
 vr = dl.get('video', expt_id)
@@ -36,11 +36,11 @@ poses = dl.get('poses', expt_id)
 The config file describes where each type of data is found on the lab volume and how to read it. While the [default config file][1] supports all common data types, `dataloader` can be initialized with a custom config file via: `DataLoader(root_dir, custom_config_file_name)`. Config files are written in [yaml](https://pyyaml.org/wiki/PyYAMLDocumentation) and contain two sections: `types` and `loaders`.
 
 ### File types
-`types` defines all data types. Definitions are require to contain
+`types` defines all data types. Definitions must contain
 - the base folder relative to `root_dir`,
 - the suffix.
 
-The file path is constructed from the folder and the suffix as `root_dir/folder/ID/IDsuffix`.
+The file path is constructed from the folder, the experiment ID, and the suffix as `root_dir/folder/ID/IDsuffix`. Folder and suffix can be lists.
 
 Optionally, a `loader` can be specified (any of the sections defined in `loaders`, see next paragraph). Be default, the loader is inferred from the suffix.
 
@@ -65,7 +65,7 @@ types:
 ```
 ### File loaders
 `loaders` defines how different file types are read. Definitions contain
-- `extensions`: Used to match file names with loaders if not explicitly specified in the types definition. Based on the filenames ending in any of the extensions.
+- `extensions`: Used to match file names with loaders if not explicitly specified in the types definition. Based on the filenames ending in any of the extensions. Can be a list.
 - `module`: automatically imported
 - `function`: function in `module` to use a loader.
 - `args`, `kwargs`: Optional arguments to be passed to the function.
